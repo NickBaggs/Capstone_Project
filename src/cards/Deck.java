@@ -1,15 +1,26 @@
 package cards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
     private ArrayList<Card> cards;
-
+    int deckCount;
     
     public Deck() {
         cards = new ArrayList<>();
+    }
+    
+    
+    //Runs the addSingleDeck method the amount of times of the received int
+    public void addDecks(int deckCount) {
+        for (int i = 0; i < deckCount; i++) {
+            addSingleDeck();
+        }
+    }
 
-        // Hearts
+    //Adds one full deck of cards to the deck
+    private void addSingleDeck() {
         cards.add(new Card("Hearts", "2", 2, 1));
         cards.add(new Card("Hearts", "3", 3, 2));
         cards.add(new Card("Hearts", "4", 4, 3));
@@ -24,7 +35,6 @@ public class Deck {
         cards.add(new Card("Hearts", "King", 10, 12));
         cards.add(new Card("Hearts", "Ace", 11, 13));
 
-        // Diamonds
         cards.add(new Card("Diamonds", "2", 2, 14));
         cards.add(new Card("Diamonds", "3", 3, 15));
         cards.add(new Card("Diamonds", "4", 4, 16));
@@ -39,7 +49,6 @@ public class Deck {
         cards.add(new Card("Diamonds", "King", 10, 25));
         cards.add(new Card("Diamonds", "Ace", 11, 26));
 
-        // Clubs
         cards.add(new Card("Clubs", "2", 2, 27));
         cards.add(new Card("Clubs", "3", 3, 28));
         cards.add(new Card("Clubs", "4", 4, 29));
@@ -54,7 +63,6 @@ public class Deck {
         cards.add(new Card("Clubs", "King", 10, 38));
         cards.add(new Card("Clubs", "Ace", 11, 39));
 
-        // Spades
         cards.add(new Card("Spades", "2", 2, 40));
         cards.add(new Card("Spades", "3", 3, 41));
         cards.add(new Card("Spades", "4", 4, 42));
@@ -70,8 +78,35 @@ public class Deck {
         cards.add(new Card("Spades", "Ace", 11, 52));
     }
 
+
     // Method to get all cards
     public ArrayList<Card> getCards() {
         return cards;
     }
+    
+    public Card draw() {
+        if (!cards.isEmpty()) {
+            return cards.remove(0);  // Removes and returns the card on top of the deck
+        } else {
+            return null;  // returns null if the deck is empty
+        }
+    }
+    
+    //Clear the Deck.
+    public void clearDeck() {
+        cards.clear();
+    }
+    
+    //Shuffle the deck
+    public void shuffleDeck() {
+        Collections.shuffle(cards);
+    }
+    
+    public void reShuffleDeck() {
+    	addDecks(deckCount);
+    	shuffleDeck();
+    }
+
+    
+    
 }
