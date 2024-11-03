@@ -1,72 +1,73 @@
 package cards;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameManager {
     private Deck deck;
     private PlayerHand playerHand;
     private DealerHand dealerHand;
-    private int deckCount; // Number of decks to use
+    private int deckCount; 
 
     // Constructor
     public GameManager(int deckCount) {
         this.deckCount = deckCount;
         deck = new Deck();
-        deck.addDecks(deckCount); // Add the specified number of decks
+        deck.addDecks(deckCount); 
         deck.shuffleDeck();
 
-        // Initialize player and dealer hands with reference to the GameManager
+        // Initialize player and dealer hands objects
         playerHand = new PlayerHand();
         dealerHand = new DealerHand();
     }
 
     
- // Method to start the game
+
     public void startGame() {
     	
-        // Deal two cards to the player
+        // Deal two cards to the player and dealer
         dealPlayerCard(playerHand);
         dealPlayerCard(playerHand);
 
-        // Deal two cards to the dealer
+        
         dealDealerCard(dealerHand);
         dealDealerCard(dealerHand);
 
-        // Display hands (player's hand and one dealer card)
-        System.out.println("Player's Hand: " + playerHand.getHand());
+        // Display hands 
+        System.out.println("Player's Hand: " + playerHand.getHand() + " " + playerHand.getPlayerHandValue());
         System.out.println("Dealer's Hand: [Hidden], " + dealerHand.getHand().get(1));
 
-        // Start player's turn
+      
         playerTurn();
 
-        // If player hasn't busted, start dealer's turn
+      
         if (getPlayerHandValue() <= 21) {
             dealerTurn();
         }
 
-        // Determine winner after both turns
+        
         determineWinner();
     }
 
-    // Method for player's turn (hit or stand)
+  
 
-    private void playerTurn() {
-        Scanner scanner = new Scanner(System.in);  // Create a scanner for user input
+    public void playerTurn() {
+        Scanner scanner = new Scanner(System.in);  
         boolean playerStands = false;
 
         while (!playerStands && getPlayerHandValue() < 21) {
-            System.out.println("Your hand: " + playerHand.getHand());
+            System.out.println("Your hand: " + playerHand.getHand() + " " + playerHand.getPlayerHandValue());
             System.out.println("Would you like to (1) Hit or (2) Stand?");
             
             int choice = scanner.nextInt();  
 
             if (choice == 1) {
-                dealPlayerCard(playerHand);  // Player hits
+                dealPlayerCard(playerHand);  
                 if (getPlayerHandValue() > 21) {
                     System.out.println("Player busts! Hand value: " + getPlayerHandValue());
-                    return;  // Player loses immediately if bust
+                    return;  
                 }
             } else if (choice == 2) {
-                playerStands = true;  // Player chooses to stand
+                playerStands = true;  
                 System.out.println("Player stands with hand value: " + getPlayerHandValue());
             } else {
                 System.out.println("Invalid choice. Please enter (1) Hit or (2) Stand.");
@@ -78,7 +79,7 @@ public class GameManager {
 
 
     // Method for dealer's turn (dealer hits until hand value is 17 or higher)
-    private void dealerTurn() {
+    public void dealerTurn() {
         System.out.println("Dealer's turn.");
         System.out.println("Dealer's hand: " + dealerHand.getHand());
 
@@ -96,7 +97,7 @@ public class GameManager {
     }
 
     // Method to determine the winner
-    private void determineWinner() {
+    public void determineWinner() {
         int playerValue = getPlayerHandValue();
         int dealerValue = getDealerHandValue();
 
@@ -109,7 +110,7 @@ public class GameManager {
         } else if (dealerValue > playerValue) {
             System.out.println("Dealer wins with " + dealerValue + " against Player's " + playerValue);
         } else {
-            System.out.println("It's a tie with " + playerValue);
+            System.out.println("It's a push " + playerValue);
         }
     }
 
@@ -140,6 +141,16 @@ public class GameManager {
     
     public int getDealerHandValue() {
         return dealerHand.getDealerHandValue();
+    }
+    
+    public ArrayList<Card> getPlayerHand() {
+    	return playerHand.getHand();
+    	
+    }
+    
+    public ArrayList<Card> getDealerHand() {
+    	return dealerHand.getHand();
+    	
     }
     
     
