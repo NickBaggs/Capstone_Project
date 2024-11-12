@@ -12,5 +12,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="lib" path="C:/Users/candy/Desktop/Capstone Workspace/Capstone_Project/assets/MySQL Driver/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

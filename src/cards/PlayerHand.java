@@ -29,7 +29,7 @@ public class PlayerHand {
         ArrayList<Card> hand = getHand();  
         
         
-        //Iterate through hand and get the values of the cards
+        
         for (int i = 0; i < hand.size(); i++) {
             Card card = hand.get(i); 
             totalValue += card.getValue();
@@ -38,7 +38,7 @@ public class PlayerHand {
             ++aceAmount;	
             }
         }
-        //Adjust value of hand based on presence of an ace
+        
         while (totalValue<11 && aceAmount>0) {
         	totalValue = totalValue+10;
         	--aceAmount;
