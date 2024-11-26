@@ -47,6 +47,10 @@ public class DealerHand {
 
         return totalValue; 
     }
+    
+    public void clearHand() {
+        hand.clear();  
+    }
 
 
     

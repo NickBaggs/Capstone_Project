@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DatabaseConnector {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/BeatTheHouseDB";  
-    private static final String USER = "root";  // 
-    private static final String PASSWORD = "sonic09";  
+    private static final String URL = "jdbc:mysql://localhost:3306/BeatTheHouseDB";  // Database URL
+    private static final String USER = "root";  // Database username
+    private static final String PASSWORD = "sonic09";  // Database password
 
     public static Connection getConnection() {
         Connection connection = null;
@@ -28,6 +28,6 @@ public class DatabaseConnector {
             e.printStackTrace();
         }
 
-        return connection;  
+        return connection;
     }
 }

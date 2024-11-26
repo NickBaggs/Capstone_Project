@@ -27,7 +27,7 @@ public class ProfileScreen {
         layout = new Pane();  // Using Pane for flexible positioning
 
         // Set the background image
-        String backgroundImagePath = "file:C:/Users/candy/Desktop/Capstone Workspace/Capstone_Project/assets/Backgrounds/Table_Background.png";
+        String backgroundImagePath = "file:assets/Backgrounds/Table_Background.png";
         Image backgroundImage = new Image(backgroundImagePath);
 
         // Set the BackgroundImage to scale to the size of the window

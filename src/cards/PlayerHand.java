@@ -47,6 +47,9 @@ public class PlayerHand {
         return totalValue; 
     }
 
+    public void clearHand() {
+        hand.clear();  
+    }
 
     
 
